@@ -31,11 +31,11 @@ export function Hero() {
               SYSTEM.READY // V1.0
             </motion.div>
             
-            <h1 className="text-5xl md:text-7xl font-bold font-space leading-tight">
-              Hi, I'm <span className="neon-text-cyan text-neon-cyan">Developer</span>
-              <br />
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold font-space leading-tight">
+              Hi, I'm <span className="neon-text-cyan text-neon-cyan">Ajwad</span>
+              <br className="hidden sm:block" />
               Building Modern
-              <br />
+              <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple">
                 Digital Experiences
               </span>

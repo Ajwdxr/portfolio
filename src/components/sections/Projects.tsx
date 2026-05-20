@@ -60,7 +60,7 @@ const projects = [
 const ProjectPreview = ({ project }: { project: any }) => {
   if (project.category === "Mobile App") {
     return (
-      <div className="absolute right-10 -bottom-20 md:-bottom-10 w-48 md:w-64 h-80 rounded-3xl border-[6px] border-[#0f172a] bg-[#070b14] shadow-2xl overflow-hidden group-hover:-translate-y-6 transition-transform duration-700 z-0 opacity-80 group-hover:opacity-100">
+      <div className="hidden lg:block absolute right-10 -bottom-10 w-64 h-80 rounded-3xl border-[6px] border-[#0f172a] bg-[#070b14] shadow-2xl overflow-hidden group-hover:-translate-y-6 transition-transform duration-700 z-0 opacity-80 group-hover:opacity-100">
         <div className="absolute top-0 inset-x-0 h-6 flex justify-center">
           <div className="w-24 h-5 bg-[#0f172a] rounded-b-2xl" />
         </div>
@@ -75,7 +75,7 @@ const ProjectPreview = ({ project }: { project: any }) => {
   
   if (project.category === "System") {
     return (
-      <div className="absolute right-0 -bottom-8 w-full md:w-[120%] h-56 rounded-xl border border-white/10 bg-[#070b14] shadow-2xl overflow-hidden group-hover:-translate-y-4 group-hover:rotate-2 transition-all duration-700 z-0 opacity-70 group-hover:opacity-100">
+      <div className="hidden lg:block absolute right-0 -bottom-8 w-[120%] h-56 rounded-xl border border-white/10 bg-[#070b14] shadow-2xl overflow-hidden group-hover:-translate-y-4 group-hover:rotate-2 transition-all duration-700 z-0 opacity-70 group-hover:opacity-100">
         <div className="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
@@ -93,12 +93,11 @@ const ProjectPreview = ({ project }: { project: any }) => {
   }
 
   return (
-    <div className="absolute right-0 -bottom-12 w-full md:w-[110%] lg:w-[120%] h-64 md:h-80 rounded-tl-xl border-t border-l border-white/10 bg-[#070b14]/90 backdrop-blur-md shadow-2xl overflow-hidden group-hover:-translate-y-6 group-hover:-rotate-1 transition-all duration-700 z-0 opacity-70 group-hover:opacity-100">
+    <div className="hidden lg:block absolute right-0 -bottom-12 w-[120%] h-80 rounded-tl-xl border-t border-l border-white/10 bg-[#070b14]/90 backdrop-blur-md shadow-2xl overflow-hidden group-hover:-translate-y-6 group-hover:-rotate-1 transition-all duration-700 z-0 opacity-70 group-hover:opacity-100">
        <div className="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
         <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
         <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
         <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-        <div className="mx-auto w-1/3 h-3 bg-white/5 rounded-full" />
       </div>
       <div className="p-6">
         <div 
@@ -165,32 +164,32 @@ export function Projects() {
             <span className="font-mono text-neon-cyan text-sm tracking-widest uppercase">sys.orbital_grid</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-space font-bold mb-4 tracking-tight flex items-center gap-2">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-space font-bold mb-4 tracking-tight flex flex-wrap items-center gap-2">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-pink-glow drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">
               FEATURED_PROJECTS
             </span>
           </h2>
           
           <div className="h-[1px] w-full max-w-xl bg-gradient-to-r from-neon-cyan via-neon-purple to-transparent opacity-50 mb-4" />
-          <p className="text-text-secondary text-lg font-space max-w-2xl">
+          <p className="text-text-secondary text-base sm:text-lg font-space max-w-2xl">
             Select an orbiting module to inspect system architecture.
           </p>
         </motion.div>
 
         {/* 3D Orbital System */}
-        <div className="relative w-full max-w-[350px] h-[350px] md:max-w-[600px] md:h-[600px] mx-auto mt-20 md:mt-10">
+        <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[600px] md:h-[600px] mx-auto mt-16 md:mt-10">
           
           {/* Orbit Rings */}
           <div className="absolute inset-0 rounded-full border border-white/5 border-dashed" />
-          <div className="absolute inset-8 md:inset-16 rounded-full border border-white/5" />
-          <div className="absolute inset-16 md:inset-32 rounded-full border border-white/5 border-dashed" />
+          <div className="absolute inset-6 sm:inset-8 md:inset-16 rounded-full border border-white/5" />
+          <div className="absolute inset-12 sm:inset-16 md:inset-32 rounded-full border border-white/5 border-dashed" />
 
           {/* Central Core */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#080c16] border-2 border-neon-cyan shadow-[0_0_40px_rgba(0,245,255,0.2)] flex items-center justify-center z-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-[#080c16] border-2 border-neon-cyan shadow-[0_0_40px_rgba(0,245,255,0.2)] flex items-center justify-center z-10">
             <div className="absolute inset-0 bg-neon-cyan/20 rounded-full blur-md animate-pulse" />
             <div className="relative flex flex-col items-center">
-              <Code2 className="w-8 h-8 text-neon-cyan mb-1 animate-pulse" />
-              <span className="text-[10px] font-mono text-white font-bold tracking-widest">SYS.CORE</span>
+              <Code2 className="w-6 h-6 md:w-8 md:h-8 text-neon-cyan mb-1 animate-pulse" />
+              <span className="text-[8px] md:text-[10px] font-mono text-white font-bold tracking-widest">SYS.CORE</span>
             </div>
           </div>
 
@@ -208,23 +207,41 @@ export function Projects() {
                   onMouseEnter={() => setIsPaused(true)}
                   onMouseLeave={() => setIsPaused(false)}
                 >
-                  {/* Satellite Card */}
-                  <div 
-                    onClick={() => setActiveProject(project)}
-                    className="relative group w-48 md:w-56 flex-shrink-0 p-[1px] rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300"
-                    style={style}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--glow-color)] to-transparent opacity-20 group-hover:opacity-80 transition-opacity duration-300" />
-                    <div className="relative bg-[#080c16]/90 backdrop-blur-md rounded-xl p-3 md:p-4 border border-white/10 group-hover:border-[var(--glow-color)]/50 transition-colors flex items-center gap-3 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                      <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-[var(--glow-color)]">
-                        <project.icon className="w-5 h-5 md:w-6 md:h-6" />
+                  {/* Responsive Satellite Button */}
+                  <div className="cursor-pointer" onClick={() => setActiveProject(project)}>
+                    
+                    {/* Desktop Satellite Card (md and up) */}
+                    <div 
+                      className="hidden md:flex relative group w-56 flex-shrink-0 p-[1px] rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
+                      style={style}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--glow-color)] to-transparent opacity-20 group-hover:opacity-80 transition-opacity duration-300" />
+                      <div className="relative bg-[#080c16]/90 backdrop-blur-md rounded-xl p-4 border border-white/10 group-hover:border-[var(--glow-color)]/50 transition-colors flex items-center gap-3 shadow-[0_0_15px_rgba(0,0,0,0.5)] w-full">
+                        <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-[var(--glow-color)]">
+                          <project.icon className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1 overflow-hidden text-left">
+                          <h4 className="text-base font-bold text-white truncate group-hover:text-[var(--glow-color)] transition-colors">{project.title}</h4>
+                          <p className="text-[10px] font-mono text-white/50 tracking-widest truncate">{project.type}</p>
+                        </div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[var(--glow-color)] animate-pulse" />
                       </div>
-                      <div className="flex-1 overflow-hidden">
-                        <h4 className="text-sm md:text-base font-bold text-white truncate group-hover:text-[var(--glow-color)] transition-colors">{project.title}</h4>
-                        <p className="text-[8px] md:text-[10px] font-mono text-white/50 tracking-widest truncate">{project.type}</p>
-                      </div>
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--glow-color)] animate-pulse" />
                     </div>
+
+                    {/* Mobile Satellite Node (less than md) */}
+                    <div 
+                      className="md:hidden relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center border border-white/10 hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+                      style={{ 
+                        backgroundColor: '#080c16',
+                        boxShadow: `0 0 15px ${project.color}20, inset 0 0 5px ${project.color}20`,
+                        borderColor: `${project.color}30`
+                      }}
+                    >
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent to-[var(--glow-color)] opacity-20 group-hover:opacity-60 transition-opacity duration-300" />
+                      <project.icon className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 transition-colors" style={{ color: project.color }} />
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--glow-color)] animate-pulse" />
+                    </div>
+
                   </div>
                 </div>
               );
@@ -313,10 +330,10 @@ export function Projects() {
                       <span className="text-xs font-space text-[var(--glow-color)] border border-[var(--glow-color)]/30 bg-[var(--glow-color)]/10 px-3 py-1.5 rounded-full mb-4 inline-block font-bold tracking-wider shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                         {activeProject.type}
                       </span>
-                      <h3 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
+                      <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
                         {activeProject.title}
                       </h3>
-                      <p className="text-white/70 text-base sm:text-lg leading-relaxed bg-[#080c16]/50 p-4 rounded-xl border border-white/5 backdrop-blur-sm">
+                      <p className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed bg-[#080c16]/50 p-4 rounded-xl border border-white/5 backdrop-blur-sm">
                         {activeProject.description}
                       </p>
                     </div>

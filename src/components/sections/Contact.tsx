@@ -48,7 +48,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 relative z-10 bg-[#070b14] overflow-hidden border-t border-white/5">
+    <section id="contact" className="py-20 lg:py-32 relative z-10 bg-[#070b14] overflow-hidden border-t border-white/5">
       {/* Background Effects */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-neon-cyan/5 rounded-full blur-[150px] -translate-y-1/2" />
@@ -69,7 +69,7 @@ export function Contact() {
             <Cpu className="w-6 h-6 text-neon-cyan" />
             <span className="font-mono text-neon-cyan text-sm tracking-widest uppercase">sys.comms</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-space font-bold mb-6">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-white to-neon-purple drop-shadow-[0_0_15px_rgba(0,245,255,0.3)]">
               ESTABLISH_CONNECTION
             </span>
@@ -127,21 +127,20 @@ export function Contact() {
               <div className="relative group p-[1px] rounded-2xl overflow-hidden bg-white/5 hover:bg-transparent transition-colors">
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-glow to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
                 <div className="relative bg-[#080c16]/95 backdrop-blur-xl rounded-2xl p-6 flex items-center gap-6 border border-white/5 group-hover:border-pink-glow/30 transition-colors z-10">
-                  
-                  {/* Online Status HUD */}
-                  <div className="absolute top-5 right-5 flex items-center gap-2 bg-neon-cyan/10 border border-neon-cyan/20 px-3 py-1 rounded-full shadow-[0_0_10px_rgba(0,245,255,0.1)]">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
-                    </span>
-                    <span className="text-[10px] text-neon-cyan font-mono tracking-widest font-bold">ONLINE</span>
-                  </div>
-                  
                   <div className="p-4 bg-pink-glow/10 text-pink-glow rounded-xl border border-pink-glow/20 shadow-[0_0_15px_rgba(255,77,157,0.1)] group-hover:scale-110 group-hover:bg-pink-glow/20 transition-all duration-300">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest mb-1">Location Base</p>
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest">Location Base</p>
+                      <div className="flex items-center gap-1.5 bg-neon-cyan/10 border border-neon-cyan/20 px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(0,245,255,0.1)]">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-neon-cyan"></span>
+                        </span>
+                        <span className="text-[8px] text-neon-cyan font-mono tracking-widest font-bold">ONLINE</span>
+                      </div>
+                    </div>
                     <p className="font-space font-bold text-lg text-white group-hover:text-pink-glow transition-colors">Cyber City, Sector 7</p>
                   </div>
                 </div>

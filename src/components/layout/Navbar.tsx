@@ -40,7 +40,7 @@ export function Navbar() {
           className="flex items-center gap-2 text-neon-cyan font-space font-bold text-xl"
         >
           <Code2 className="w-6 h-6" />
-          <span>DEVPORT_</span>
+          <span>AJWAD.DEV_</span>
         </motion.div>
 
         {/* Desktop Nav */}

@@ -13,7 +13,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Cyberpunk Developer Portfolio",
+  title: "Ajwad | Cyberpunk Portfolio",
   description: "Building Modern Digital Experiences. A futuristic cyberpunk portfolio.",
   manifest: "/manifest.json",
 };
@@ -31,8 +31,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden">
+      <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden" suppressHydrationWarning>
         {children}
       </body>
     </html>

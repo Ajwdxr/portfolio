@@ -9,11 +9,11 @@ export function Footer() {
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2 text-neon-cyan font-space font-bold text-xl">
           <Code2 className="w-6 h-6" />
-          <span>DEVPORT_</span>
+          <span>AJWAD.DEV_</span>
         </div>
 
         <p className="text-text-secondary text-sm font-space">
-          © {new Date().getFullYear()} DEVPORT. All rights reserved.
+          © {new Date().getFullYear()} AJWAD.DEV. All rights reserved.
         </p>
 
         <div className="flex items-center gap-4">

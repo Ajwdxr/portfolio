@@ -120,7 +120,7 @@ const ToolsConnectors = () => (
 
 export function TechStack() {
   return (
-    <section id="tech" className="py-32 relative z-10 bg-[#070b14] overflow-hidden border-y border-white/5">
+    <section id="tech" className="py-20 lg:py-32 relative z-10 bg-[#070b14] overflow-hidden border-y border-white/5">
       {/* Background Effects */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[150px]" />
@@ -136,7 +136,7 @@ export function TechStack() {
           viewport={{ once: true }}
           className="text-center mb-24 relative z-10"
         >
-          <h2 className="text-5xl md:text-6xl font-space font-bold mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-space font-bold mb-4 tracking-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-white to-neon-purple drop-shadow-[0_0_10px_rgba(0,245,255,0.3)]">
               Technical Arsenal
             </span>

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, MessageSquare, Terminal, ShieldCheck, Cpu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getProfile } from "@/lib/supabase";
 
 const SubmitButton = ({ status }: { status: string }) => {
   return (
@@ -36,6 +37,22 @@ const SubmitButton = ({ status }: { status: string }) => {
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [profile, setProfile] = useState<any>({
+    email: "hello@developer.com",
+    whatsapp: "+1 (555) 019-2024",
+    location: "Cyber City, Sector 7",
+    status: "ONLINE"
+  });
+
+  useEffect(() => {
+    async function loadProfile() {
+      const data = await getProfile();
+      if (data) {
+        setProfile(data);
+      }
+    }
+    loadProfile();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,14 +99,14 @@ export function Contact() {
             Ready to initiate your next digital project? Send a secure transmission.
           </p>
         </motion.div>
-
+ 
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Contact Cards */}
           <div className="lg:col-span-5 space-y-4 relative">
             {/* HUD Connection Line */}
             <div className="absolute left-[52px] top-12 bottom-12 w-[1px] bg-gradient-to-b from-neon-cyan/0 via-neon-cyan/20 to-neon-purple/0 hidden lg:block" />
-
+ 
             {/* Direct Email */}
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
               <div className="relative group p-[1px] rounded-2xl overflow-hidden bg-white/5 hover:bg-transparent transition-colors">
@@ -100,12 +117,12 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest mb-1">Direct Email</p>
-                    <p className="font-space font-bold text-lg text-white group-hover:text-neon-cyan transition-colors">hello@developer.com</p>
+                    <p className="font-space font-bold text-lg text-white group-hover:text-neon-cyan transition-colors">{profile.email}</p>
                   </div>
                 </div>
               </div>
             </motion.div>
-
+ 
             {/* WhatsApp */}
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
               <div className="relative group p-[1px] rounded-2xl overflow-hidden bg-white/5 hover:bg-transparent transition-colors">
@@ -116,12 +133,12 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest mb-1">WhatsApp CTA</p>
-                    <p className="font-space font-bold text-lg text-white group-hover:text-neon-purple transition-colors">+1 (555) 019-2024</p>
+                    <p className="font-space font-bold text-lg text-white group-hover:text-neon-purple transition-colors">{profile.whatsapp}</p>
                   </div>
                 </div>
               </div>
             </motion.div>
-
+ 
             {/* Location */}
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
               <div className="relative group p-[1px] rounded-2xl overflow-hidden bg-white/5 hover:bg-transparent transition-colors">
@@ -133,15 +150,28 @@ export function Contact() {
                   <div>
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <p className="text-[10px] font-mono text-text-secondary uppercase tracking-widest">Location Base</p>
-                      <div className="flex items-center gap-1.5 bg-neon-cyan/10 border border-neon-cyan/20 px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(0,245,255,0.1)]">
+                      <div className={cn(
+                        "flex items-center gap-1.5 px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(0,245,255,0.1)] border",
+                        profile.status === "ONLINE" 
+                          ? "bg-neon-cyan/10 border-neon-cyan/20 text-neon-cyan" 
+                          : profile.status === "AWAY" 
+                          ? "bg-amber-500/10 border-amber-500/20 text-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.1)]" 
+                          : "bg-pink-glow/10 border-pink-glow/20 text-pink-glow shadow-[0_0_10px_rgba(255,77,157,0.1)]"
+                      )}>
                         <span className="relative flex h-1.5 w-1.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-neon-cyan"></span>
+                          <span className={cn(
+                            "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
+                            profile.status === "ONLINE" ? "bg-neon-cyan" : profile.status === "AWAY" ? "bg-amber-500" : "bg-pink-glow"
+                          )}></span>
+                          <span className={cn(
+                            "relative inline-flex rounded-full h-1.5 w-1.5",
+                            profile.status === "ONLINE" ? "bg-neon-cyan" : profile.status === "AWAY" ? "bg-amber-500" : "bg-pink-glow"
+                          )}></span>
                         </span>
-                        <span className="text-[8px] text-neon-cyan font-mono tracking-widest font-bold">ONLINE</span>
+                        <span className="text-[8px] font-mono tracking-widest font-bold">{profile.status}</span>
                       </div>
                     </div>
-                    <p className="font-space font-bold text-lg text-white group-hover:text-pink-glow transition-colors">Cyber City, Sector 7</p>
+                    <p className="font-space font-bold text-lg text-white group-hover:text-pink-glow transition-colors">{profile.location}</p>
                   </div>
                 </div>
               </div>

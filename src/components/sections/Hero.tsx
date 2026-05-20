@@ -1,9 +1,32 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { NeonButton } from "@/components/ui/NeonButton";
+import { getProfile, Profile } from "@/lib/supabase";
 
 export function Hero() {
+  const [profile, setProfile] = useState<Profile>({
+    name: "Ajwad",
+    role: "Full Stack Developer",
+    tagline: "Building Modern Digital Experiences",
+    bio: "I specialize in creating futuristic portfolio websites, immersive web applications, and scalable systems using cutting-edge technologies.",
+    email: "hello@developer.com",
+    whatsapp: "+1 (555) 019-2024",
+    location: "Cyber City, Sector 7",
+    status: "ONLINE",
+  });
+
+  useEffect(() => {
+    async function loadProfile() {
+      const data = await getProfile();
+      if (data) {
+        setProfile(data);
+      }
+    }
+    loadProfile();
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Effects */}
@@ -27,22 +50,36 @@ export function Hero() {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neon-cyan/30 bg-neon-cyan/10 text-neon-cyan font-space text-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
-              SYSTEM.READY // V1.0
+              <span className={`w-2 h-2 rounded-full animate-pulse ${
+                profile.status === "ONLINE" 
+                  ? "bg-neon-cyan" 
+                  : profile.status === "AWAY" 
+                  ? "bg-amber-500" 
+                  : "bg-pink-glow"
+              }`} />
+              SYSTEM.STATUS // {profile.status}
             </motion.div>
             
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold font-space leading-tight">
-              Hi, I'm <span className="neon-text-cyan text-neon-cyan">Ajwad</span>
+              Hi, I'm <span className="neon-text-cyan text-neon-cyan">{profile.name}</span>
               <br className="hidden sm:block" />
-              Building Modern
-              <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple">
-                Digital Experiences
-              </span>
+              {profile.tagline.includes("Building Modern") ? (
+                <>
+                  Building Modern
+                  <br className="hidden sm:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple">
+                    {profile.tagline.replace("Building Modern", "").trim()}
+                  </span>
+                </>
+              ) : (
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple">
+                  {profile.tagline}
+                </span>
+              )}
             </h1>
             
             <p className="text-text-secondary text-lg md:text-xl max-w-xl leading-relaxed">
-              I specialize in creating futuristic portfolio websites, immersive web applications, and scalable systems using cutting-edge technologies.
+              {profile.bio}
             </p>
           </div>
 

@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Terminal, Activity, Globe, Cpu, Smartphone, Code2, X, Orbit } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { cn } from "@/lib/utils";
+import { getProjects } from "@/lib/supabase";
 
-const projects = [
+const iconMap: Record<string, any> = {
+  Activity,
+  Globe,
+  Cpu,
+  Smartphone
+};
+
+const DEFAULT_PROJECTS = [
   {
     id: "PRJ-001",
     title: "NeuroNet Dashboard",
@@ -110,8 +118,23 @@ const ProjectPreview = ({ project }: { project: any }) => {
 }
 
 export function Projects() {
+  const [projects, setProjects] = useState<any[]>(DEFAULT_PROJECTS);
   const [activeProject, setActiveProject] = useState<any | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    async function loadProjects() {
+      const data = await getProjects();
+      if (data && data.length > 0) {
+        const mapped = data.map(p => ({
+          ...p,
+          icon: iconMap[p.icon_name] || Globe
+        }));
+        setProjects(mapped);
+      }
+    }
+    loadProjects();
+  }, []);
 
   // Positions for 4 projects at 0, 90, 180, 270 degrees
   const orbitalPositions = [

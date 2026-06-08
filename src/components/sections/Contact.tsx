@@ -37,10 +37,13 @@ const SubmitButton = ({ status }: { status: string }) => {
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [name, setName] = useState("");
+  const [clientWhatsapp, setClientWhatsapp] = useState("");
+  const [message, setMessage] = useState("");
   const [profile, setProfile] = useState<any>({
-    email: "hello@developer.com",
-    whatsapp: "+1 (555) 019-2024",
-    location: "Cyber City, Sector 7",
+    email: "ajwadxara99@gmail.com",
+    whatsapp: "+60 11-1063 8176",
+    location: "Alor Setar, Kedah",
     status: "ONLINE"
   });
 
@@ -57,11 +60,21 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
-    // Simulate Supabase submission
+
+    const cleanNumber = profile.whatsapp.replace(/\D/g, "");
+    const text = `Hi Ajwad,\n\nMy name is ${name} (WhatsApp: ${clientWhatsapp}).\n\nEnquiry details:\n${message}`;
+    const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
+
     setTimeout(() => {
       setStatus("success");
+      window.open(whatsappUrl, "_blank");
+      
+      setName("");
+      setClientWhatsapp("");
+      setMessage("");
+      
       setTimeout(() => setStatus("idle"), 3000);
-    }, 1500);
+    }, 1200);
   };
 
   return (
@@ -211,18 +224,22 @@ export function Contact() {
                     <div className="space-y-2 group/input">
                       <label className="text-[10px] font-mono text-text-secondary tracking-widest group-focus-within/input:text-neon-cyan transition-colors">NAME_</label>
                       <input 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         required
                         className="w-full bg-[#0a1120] border border-white/10 rounded-lg p-4 text-white font-space focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:bg-[#0a1120]/80 transition-all placeholder:text-white/20"
                         placeholder="John Doe"
                       />
                     </div>
                     <div className="space-y-2 group/input">
-                      <label className="text-[10px] font-mono text-text-secondary tracking-widest group-focus-within/input:text-neon-cyan transition-colors">EMAIL_</label>
+                      <label className="text-[10px] font-mono text-text-secondary tracking-widest group-focus-within/input:text-neon-cyan transition-colors">WHATSAPP_</label>
                       <input 
-                        type="email"
+                        type="tel"
+                        value={clientWhatsapp}
+                        onChange={(e) => setClientWhatsapp(e.target.value)}
                         required
                         className="w-full bg-[#0a1120] border border-white/10 rounded-lg p-4 text-white font-space focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:bg-[#0a1120]/80 transition-all placeholder:text-white/20"
-                        placeholder="john@company.com"
+                        placeholder="+60123456789"
                       />
                     </div>
                   </div>
@@ -230,6 +247,8 @@ export function Contact() {
                   <div className="space-y-2 group/input">
                     <label className="text-[10px] font-mono text-text-secondary tracking-widest group-focus-within/input:text-neon-cyan transition-colors">TRANSMISSION_PAYLOAD_</label>
                     <textarea 
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       required
                       rows={5}
                       className="w-full bg-[#0a1120] border border-white/10 rounded-lg p-4 text-white font-space focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan focus:bg-[#0a1120]/80 transition-all resize-none placeholder:text-white/20"

@@ -17,51 +17,93 @@ const iconMap: Record<string, any> = {
 const DEFAULT_PROJECTS = [
   {
     id: "PRJ-001",
-    title: "NeuroNet Dashboard",
-    category: "Web App",
-    type: "WEB_APP",
-    version: "v2.4.0",
+    title: "BellyBeats",
+    category: "Mobile App",
+    type: "PWA // MOBILE_APP",
+    version: "v1.2.0",
     uptime: "99.99%",
-    description: "A futuristic AI analytics dashboard with real-time data visualization and neural network monitoring capabilities.",
-    tech: ["Next.js", "Supabase", "Framer Motion"],
-    color: "#00F5FF", // cyan
-    icon: Activity
+    description: "A premium glassmorphism baby kick tracker for soon-to-be parents, featuring real-time logging, smart insights, and offline support.",
+    tech: ["Next.js", "PWA", "Tailwind CSS", "Framer Motion"],
+    color: "#FF2D55", // rose/pink
+    icon: Activity,
+    icon_name: "Activity",
+    live: "https://bellybeats.ajwdxr.com",
+    github: null
   },
   {
     id: "PRJ-002",
-    title: "CyberCommerce",
-    category: "Website",
-    type: "WEBSITE",
-    version: "v1.2.5",
-    uptime: "99.95%",
-    description: "High-performance headless e-commerce storefront for digital assets with crypto payment integration.",
-    tech: ["React", "Tailwind", "Stripe"],
-    color: "#38BDF8", // blue
-    icon: Globe
+    title: "AttendX",
+    category: "Mobile App",
+    type: "PWA // WEB_APP",
+    version: "v1.0.0",
+    uptime: "100.0%",
+    description: "Smart attendance tracking platform with facial recognition, geolocation check-ins, real-time analytics, and smooth iOS-style transitions.",
+    tech: ["Next.js", "Tailwind CSS", "Face Recognition", "Geolocation", "PWA"],
+    color: "#007AFF", // blue
+    icon: Smartphone,
+    icon_name: "Smartphone",
+    live: "https://attendx.ajwdxr.com",
+    github: null
   },
   {
     id: "PRJ-003",
-    title: "Nexus Core API",
-    category: "System",
-    type: "SYSTEM",
-    version: "v4.0.1",
-    uptime: "99.999%",
-    description: "Scalable microservices architecture handling thousands of concurrent connections securely.",
-    tech: ["Node.js", "PostgreSQL", "Docker"],
-    color: "#F97316", // orange
-    icon: Cpu
+    title: "PromptMatrix",
+    category: "Web App",
+    type: "AI_PLATFORM",
+    version: "v2.1.0",
+    uptime: "99.95%",
+    description: "Next generation AI prompt architect and optimizer, designed to elevate ideas into structured, high-fidelity prompts for LLMs.",
+    tech: ["Next.js", "LLM API", "Tailwind CSS", "CRT Shader"],
+    color: "#39FF14", // green
+    icon: Cpu,
+    icon_name: "Cpu",
+    live: "https://promptmatrix.ajwdxr.com",
+    github: null
   },
   {
     id: "PRJ-004",
-    title: "Quantum Sync",
-    category: "Mobile App",
-    type: "MOBILE_APP",
-    version: "v1.0.0",
+    title: "KafeKiro",
+    category: "Website",
+    type: "WEBSITE",
+    version: "v1.0.4",
     uptime: "99.9%",
-    description: "Cross-platform mobile application for secure encrypted messaging and quantum-safe file transfers.",
-    tech: ["Flutter", "Firebase", "WebRTC"],
-    color: "#A855F7", // purple
-    icon: Smartphone
+    description: "A dark aesthetic, premium coffee shop landing page featuring handcrafted menus, cozy galleries, and custom modal transitions.",
+    tech: ["HTML", "Vanilla CSS", "JavaScript", "Vite"],
+    color: "#D97706", // amber
+    icon: Globe,
+    icon_name: "Globe",
+    live: "https://kafekiro.vercel.app",
+    github: null
+  },
+  {
+    id: "PRJ-005",
+    title: "E-Masjid",
+    category: "Web App",
+    type: "PORTAL",
+    version: "v1.3.1",
+    uptime: "99.98%",
+    description: "Official portal for Masjid Al Rahmah Mergong, Alor Setar. Features real-time prayer times, event announcements, a digital library, and Quran online.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Cloudflare Workers", "PWA"],
+    color: "#10B981", // emerald
+    icon: Globe,
+    icon_name: "Globe",
+    live: "https://e-masjid.taufec.workers.dev",
+    github: null
+  },
+  {
+    id: "PRJ-006",
+    title: "Rembayung",
+    category: "Website",
+    type: "WEBSITE",
+    version: "v1.1.0",
+    uptime: "99.95%",
+    description: "Authentic Kampung Cuisine restaurant landing page for Rembayung by Khairul Aming. Elegant theme selection and traditional aesthetics.",
+    tech: ["Tailwind CSS", "JavaScript", "PHP", "Theme Engine"],
+    color: "#D4AF37", // gold
+    icon: Globe,
+    icon_name: "Globe",
+    live: "https://ajwdxr.free.nf/rembayung/",
+    github: null
   }
 ];
 
@@ -128,7 +170,9 @@ export function Projects() {
       if (data && data.length > 0) {
         const mapped = data.map(p => ({
           ...p,
-          icon: iconMap[p.icon_name] || Globe
+          icon: iconMap[p.icon_name] || Globe,
+          live: p.live_url || null,
+          github: p.github_url || null
         }));
         setProjects(mapped);
       }
@@ -136,13 +180,13 @@ export function Projects() {
     loadProjects();
   }, []);
 
-  // Positions for 4 projects at 0, 90, 180, 270 degrees
-  const orbitalPositions = [
-    { top: "0%", left: "50%" },
-    { top: "50%", left: "100%" },
-    { top: "100%", left: "50%" },
-    { top: "50%", left: "0%" },
-  ];
+  // Dynamically compute orbital positions based on project count
+  const orbitalPositions = projects.map((_, idx) => {
+    const angle = -Math.PI / 2 + (idx * 2 * Math.PI) / projects.length;
+    const x = 50 + 50 * Math.cos(angle);
+    const y = 50 + 50 * Math.sin(angle);
+    return { top: `${y.toFixed(1)}%`, left: `${x.toFixed(1)}%` };
+  });
 
   return (
     <section id="projects" className="py-32 relative z-10 bg-[#070b14] overflow-hidden border-y border-white/5 min-h-screen flex flex-col justify-center">
@@ -340,12 +384,16 @@ export function Projects() {
                       </div>
                       
                       <div className="flex gap-2 mr-12">
-                        <a href={activeProject.github || "#"} className="p-3 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 transition-colors shadow-lg">
-                          <FaGithub className="w-5 h-5" />
-                        </a>
-                        <a href={activeProject.live || "#"} className="p-3 rounded-full bg-white/5 border border-white/10 text-[var(--glow-color)] hover:text-white hover:bg-[var(--glow-color)]/20 hover:border-[var(--glow-color)] transition-colors shadow-lg">
-                          <ExternalLink className="w-5 h-5" />
-                        </a>
+                        {activeProject.github && (
+                          <a href={activeProject.github} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 transition-colors shadow-lg">
+                            <FaGithub className="w-5 h-5" />
+                          </a>
+                        )}
+                        {activeProject.live && (
+                          <a href={activeProject.live} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 border border-white/10 text-[var(--glow-color)] hover:text-white hover:bg-[var(--glow-color)]/20 hover:border-[var(--glow-color)] transition-colors shadow-lg">
+                            <ExternalLink className="w-5 h-5" />
+                          </a>
+                        )}
                       </div>
                     </div>
 

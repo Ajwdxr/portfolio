@@ -11,9 +11,9 @@ export function Hero() {
     role: "Full Stack Developer",
     tagline: "Building Modern Digital Experiences",
     bio: "I specialize in creating futuristic portfolio websites, immersive web applications, and scalable systems using cutting-edge technologies.",
-    email: "hello@developer.com",
-    whatsapp: "+1 (555) 019-2024",
-    location: "Cyber City, Sector 7",
+    email: "ajwadxara99@gmail.com",
+    whatsapp: "+60 11-1063 8176",
+    location: "Alor Setar, Kedah",
     status: "ONLINE",
   });
 

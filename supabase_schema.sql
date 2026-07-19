@@ -184,6 +184,20 @@ VALUES
     'Globe',
     'https://ajwdxr.free.nf/rembayung/',
     NULL
+),
+(
+    'PRJ-007',
+    'Afif Azman',
+    'Website',
+    'PORTAL // WEBSITE',
+    'v1.0.0',
+    '99.9%',
+    'A professional property consultant portal for Johor real estate, specializing in industrial, commercial, and residential properties with integrated search services and WhatsApp booking.',
+    ARRAY['HTML', 'Vanilla CSS', 'JavaScript', 'PHP', 'PWA'],
+    '#9A1C2E',
+    'Home',
+    'https://afifazman.com/',
+    NULL
 ) ON CONFLICT (id) DO UPDATE SET
     title = EXCLUDED.title,
     category = EXCLUDED.category,

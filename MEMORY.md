@@ -20,6 +20,7 @@ Next.js portfolio app development workspace. The repository has been registered 
 - [x] Add 6 real projects: BellyBeats, AttendX, PromptMatrix, KafeKiro, E-Masjid, Rembayung.
 - [x] Make orbital positions dynamically computed based on project count.
 - [x] Sync supabase_schema.sql seed statements.
+- [x] Add Afif Azman property portal website (PRJ-007) and sync seed statements.
 
 ## Notes & Rules
 - The `CLAUDE.md` in this directory points to `@AGENTS.md`.

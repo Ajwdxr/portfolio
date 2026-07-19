@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Terminal, Activity, Globe, Cpu, Smartphone, Code2, X, Orbit } from "lucide-react";
+import { ExternalLink, Terminal, Activity, Globe, Cpu, Smartphone, Code2, X, Orbit, Home } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { getProjects } from "@/lib/supabase";
@@ -11,7 +11,8 @@ const iconMap: Record<string, any> = {
   Activity,
   Globe,
   Cpu,
-  Smartphone
+  Smartphone,
+  Home
 };
 
 const DEFAULT_PROJECTS = [
@@ -103,6 +104,21 @@ const DEFAULT_PROJECTS = [
     icon: Globe,
     icon_name: "Globe",
     live: "https://ajwdxr.free.nf/rembayung/",
+    github: null
+  },
+  {
+    id: "PRJ-007",
+    title: "Afif Azman",
+    category: "Website",
+    type: "PORTAL // WEBSITE",
+    version: "v1.0.0",
+    uptime: "99.9%",
+    description: "A professional property consultant portal for Johor real estate, specializing in industrial, commercial, and residential properties with integrated search services and WhatsApp booking.",
+    tech: ["HTML", "Vanilla CSS", "JavaScript", "PHP", "PWA"],
+    color: "#9A1C2E", // Crimson/Maroon
+    icon: Home,
+    icon_name: "Home",
+    live: "https://afifazman.com/",
     github: null
   }
 ];

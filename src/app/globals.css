@@ -1,15 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #070B14;
+  --color-background: #080B10;
   --color-foreground: #F8FAFC;
-  --color-secondary-bg: #0F172A;
-  --color-neon-cyan: #00F5FF;
-  --color-neon-purple: #8B5CF6;
-  --color-pink-glow: #FF4D9D;
-  --color-accent-blue: #38BDF8;
+  --color-surface-glass: rgba(255, 255, 255, 0.03);
+  --color-surface-glass-hover: rgba(255, 255, 255, 0.06);
+  --color-border-glass: rgba(255, 255, 255, 0.08);
+  --color-border-glass-hover: rgba(255, 255, 255, 0.2);
+  
+  --color-frost-ice: #38BDF8;
+  --color-frost-cyan: #7DD3FC;
+  --color-titanium-silver: #E2E8F0;
+  --color-titanium-muted: #94A3B8;
+  --color-slate-surface: #0E131F;
+  
   --color-text-primary: #F8FAFC;
   --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
 
   --font-space: var(--font-space-grotesk);
   --font-inter: var(--font-inter);
@@ -17,7 +24,7 @@
 
 @layer base {
   :root {
-    --background: #070B14;
+    --background: #080B10;
     --foreground: #F8FAFC;
   }
 
@@ -26,52 +33,92 @@
     color: var(--foreground);
     font-family: var(--font-inter), sans-serif;
     overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.04) 0%, transparent 60%),
+      radial-gradient(circle at 100% 40%, rgba(226, 232, 240, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 0% 70%, rgba(56, 189, 248, 0.02) 0%, transparent 50%);
   }
 
-  /* Custom Scrollbar */
+  /* Custom Nordic Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #070B14;
+    background: #080B10;
   }
   ::-webkit-scrollbar-thumb {
-    background: #8B5CF6;
-    border-radius: 4px;
+    background: rgba(226, 232, 240, 0.15);
+    border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #00F5FF;
+    background: rgba(56, 189, 248, 0.4);
   }
 
   /* Selection */
   ::selection {
-    background: rgba(0, 245, 255, 0.3);
-    color: #00F5FF;
+    background: rgba(56, 189, 248, 0.25);
+    color: #BAE6FD;
   }
 }
 
 @layer utilities {
-  .glass-card {
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  }
-  
-  .neon-text-cyan {
-    text-shadow: 0 0 10px rgba(0, 245, 255, 0.7), 0 0 20px rgba(0, 245, 255, 0.5);
-  }
-  
-  .neon-text-purple {
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.7), 0 0 20px rgba(139, 92, 246, 0.5);
+  /* Nordic Frost Liquid Glass */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+      0 4px 24px -1px rgba(0, 0, 0, 0.35),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
   }
 
-  .neon-border-cyan {
-    box-shadow: 0 0 10px rgba(0, 245, 255, 0.3), inset 0 0 10px rgba(0, 245, 255, 0.3);
+  .liquid-glass-card {
+    background: rgba(14, 19, 31, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+      0 20px 40px -15px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
   }
-  
-  .neon-border-purple {
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.3);
+
+  .liquid-glass-card:hover {
+    border-color: rgba(56, 189, 248, 0.25);
+    background: rgba(18, 25, 42, 0.8);
+    box-shadow: 
+      0 20px 40px -15px rgba(0, 0, 0, 0.6),
+      0 0 25px rgba(56, 189, 248, 0.06),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .liquid-glass-pill {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(14, 19, 31, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+      0 10px 30px -5px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .text-titanium-gradient {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, #94A3B8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-frost-gradient {
+    background: linear-gradient(135deg, #FFFFFF 0%, #BAE6FD 50%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }

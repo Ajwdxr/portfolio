@@ -1,11 +1,11 @@
 {
-  "name": "Ajwad | Cyberpunk Portfolio",
-  "short_name": "AjwadPort",
-  "description": "Building Modern Digital Experiences. A futuristic cyberpunk portfolio.",
+  "name": "Ajwad | Liquid Glass Portfolio",
+  "short_name": "Ajwad.dev",
+  "description": "Crafting modern digital experiences with minimalist precision, liquid glassmorphism, and high performance.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#070B14",
-  "theme_color": "#070B14",
+  "background_color": "#080B10",
+  "theme_color": "#080B10",
   "icons": [
     {
       "src": "/icons/icon-192.svg",

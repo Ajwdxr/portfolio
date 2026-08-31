@@ -2,196 +2,184 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { BrainCircuit, Cpu, Layout, Terminal } from "lucide-react";
+import { BrainCircuit, Cpu, Layout, Sparkles } from "lucide-react";
 
 const features = [
   {
     icon: BrainCircuit,
     title: "Problem Solving",
-    description: "Architecting logical solutions to complex digital challenges.",
-    color: "text-neon-cyan",
-    glowColor: "rgba(0, 245, 255, 0.12)",
-    borderColor: "#00F5FF",
-    hoverGlow: "rgba(0, 245, 255, 0.08)",
-    statLabel: "ALGO_EFFICIENCY",
-    statValue: "OPTIMAL // O(1)",
+    description: "Architecting logical solutions to complex digital challenges with clean algorithmic thinking.",
+    color: "#38BDF8", // sky / ice
+    glowColor: "rgba(56, 189, 248, 0.12)",
+    borderColor: "rgba(56, 189, 248, 0.3)",
+    statLabel: "Algorithmic Efficiency",
+    statValue: "O(1) // Optimal",
     progress: 95,
-    tags: ["DSA", "Optimization", "Logic"]
+    tags: ["Data Structures", "Optimization", "Logic Flow"]
   },
   {
     icon: Cpu,
     title: "System Architecture",
-    description: "Designing scalable, high-performance backends and APIs.",
-    color: "text-neon-purple",
-    glowColor: "rgba(139, 92, 246, 0.12)",
-    borderColor: "#8B5CF6",
-    hoverGlow: "rgba(139, 92, 246, 0.08)",
-    statLabel: "UPTIME_DESIGN",
-    statValue: "99.999% READY",
-    progress: 90,
-    tags: ["APIs", "Microservices", "Docker"]
+    description: "Designing scalable, resilient backends, RESTful APIs, and cloud microservices.",
+    color: "#E2E8F0", // titanium platinum
+    glowColor: "rgba(226, 232, 240, 0.12)",
+    borderColor: "rgba(226, 232, 240, 0.3)",
+    statLabel: "System Reliability",
+    statValue: "99.99% Uptime",
+    progress: 92,
+    tags: ["REST APIs", "PostgreSQL", "Docker", "Edge Functions"]
   },
   {
     icon: Layout,
-    title: "UI/UX Focus",
-    description: "Crafting immersive, pixel-perfect user interfaces.",
-    color: "text-pink-glow",
-    glowColor: "rgba(255, 77, 157, 0.12)",
-    borderColor: "#FF4D9D",
-    hoverGlow: "rgba(255, 77, 157, 0.08)",
-    statLabel: "RENDER_PERF",
-    statValue: "60 FPS // FLUID",
+    title: "Liquid UI / UX Focus",
+    description: "Crafting tactile, fluid interfaces with micro-interactions, responsive layouts, and rich aesthetics.",
+    color: "#7DD3FC", // frost cyan
+    glowColor: "rgba(125, 211, 252, 0.12)",
+    borderColor: "rgba(125, 211, 252, 0.3)",
+    statLabel: "Animation Framerate",
+    statValue: "60 FPS Fluid",
     progress: 98,
-    tags: ["Framer Motion", "Tailwind v4", "Aesthetics"]
+    tags: ["Framer Motion", "Tailwind CSS", "Liquid Glass", "Next.js"]
   }
 ];
 
 export function About() {
   return (
-    <section id="about" className="py-32 relative z-10 overflow-hidden">
-      <style>{`
-        .cyber-about-card {
-          border: 1px solid rgba(255, 255, 255, 0.05) !important;
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        }
-        .cyber-about-card:hover {
-          border-color: var(--hover-border) !important;
-          box-shadow: 0 0 25px var(--hover-glow), inset 0 0 10px var(--hover-glow) !important;
-        }
-      `}</style>
-
+    <section id="about" className="py-28 relative z-10 bg-[#080b10] overflow-hidden border-t border-white/[0.06]">
       {/* Background Gradients */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-neon-cyan/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/2 right-1/4 w-[400px] h-[400px] bg-neon-purple/5 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-sky-500/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-slate-300/5 rounded-full blur-[150px]" />
       </div>
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Bio & Cyber Dossier */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Bio & Dossier */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5 space-y-8"
           >
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Terminal className="w-5 h-5 text-neon-cyan" />
-                <span className="font-mono text-neon-cyan text-sm tracking-widest uppercase">sys.operator_info</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
+                <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+                <span className="font-space text-sky-300 text-xs tracking-wider uppercase">About The Creator</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-space font-bold mb-6 flex flex-wrap items-center">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-white to-neon-purple drop-shadow-[0_0_15px_rgba(0,245,255,0.3)]">
-                  DATA_LOG
-                </span>
-                <span className="text-white/40 mx-3">//</span>
-                <span>ABOUT_ME</span>
-                <span className="w-3 h-6 bg-neon-cyan ml-2 animate-pulse" />
+
+              <h2 className="text-3xl sm:text-5xl font-space font-bold text-white tracking-tight mb-4">
+                Philosophy & Craft<span className="text-sky-400">.</span>
               </h2>
-              <p className="text-text-secondary text-base sm:text-lg leading-relaxed font-space">
-                I am a system operator specializing in constructing high-performance backends and interactive, immersive user interfaces. My design process merges aesthetic logic with telemetry validation.
+
+              <p className="text-slate-400 text-base leading-relaxed font-inter">
+                I combine strong full-stack software fundamentals with modern design sensibilities. Every line of code is structured for performance, responsiveness, and clean maintainability.
               </p>
             </div>
 
-            {/* Cyberpunk Dossier Widget */}
-            <div className="border border-white/10 rounded-lg p-5 bg-[#080c16]/50 font-mono text-sm text-text-secondary max-w-lg relative overflow-hidden backdrop-blur-sm shadow-xl">
-              {/* Scanlines Effect */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,24,38,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none opacity-20" />
-              
-              {/* Corner tech dots */}
-              <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-neon-cyan/50" />
-              <div className="absolute bottom-2 left-2 w-1.5 h-1.5 rounded-full bg-neon-purple/50" />
+            {/* Frosted Glass Creator Dossier */}
+            <div className="p-6 rounded-2xl bg-[#0d121f]/70 backdrop-blur-2xl border border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.4)] relative overflow-hidden space-y-4">
+              {/* Top Specular Line */}
+              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
-              <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-2">
-                <span className="w-2.5 h-2.5 bg-neon-cyan rounded-full animate-ping" />
-                <span className="text-white font-bold tracking-widest text-xs uppercase">[SYS_OPERATOR_DOSSIER]</span>
+              <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
+                <span className="text-xs font-space font-semibold text-white tracking-wide">Developer Dossier</span>
+                <span className="text-[10px] font-inter px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-400/20">
+                  Active // Ready
+                </span>
               </div>
 
-              <div className="space-y-2.5 relative z-10">
-                <div className="flex flex-col sm:flex-row sm:justify-between border-b border-white/5 pb-1.5 gap-0.5 sm:gap-0">
-                  <span className="text-white/40 text-xs sm:text-sm">OPERATOR:</span>
-                  <span className="text-white font-bold tracking-wide text-xs sm:text-sm">AJWAD // FULLSTACK</span>
+              <div className="space-y-3 text-xs font-inter">
+                <div className="flex justify-between items-center text-slate-400">
+                  <span>Name:</span>
+                  <span className="font-medium text-white">Ajwad</span>
                 </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between border-b border-white/5 pb-1.5 gap-0.5 sm:gap-0">
-                  <span className="text-white/40 text-xs sm:text-sm">COGNITION:</span>
-                  <span className="text-neon-purple font-semibold text-xs sm:text-sm">CYBERPUNK_AESTHETICS</span>
+                <div className="flex justify-between items-center text-slate-400">
+                  <span>Role:</span>
+                  <span className="font-medium text-sky-200">Full Stack Web Developer</span>
                 </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between border-b border-white/5 pb-1.5 gap-0.5 sm:gap-0">
-                  <span className="text-white/40 text-xs sm:text-sm">LOCATION:</span>
-                  <span className="text-neon-cyan font-semibold text-xs sm:text-sm">MALAYSIA_BASE // SECTOR_01</span>
+                <div className="flex justify-between items-center text-slate-400">
+                  <span>Design Aesthetic:</span>
+                  <span className="font-medium text-slate-200">Nordic Frost & Liquid Titanium</span>
                 </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between border-b border-white/5 pb-1.5 gap-0.5 sm:gap-0">
-                  <span className="text-white/40 text-xs sm:text-sm">STATUS:</span>
-                  <div className="flex items-center gap-2 mt-0.5 sm:mt-0">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span className="text-emerald-400 font-bold text-xs sm:text-sm">ACTIVE_ONLINE</span>
-                  </div>
+                <div className="flex justify-between items-center text-slate-400">
+                  <span>Based in:</span>
+                  <span className="font-medium text-white">Alor Setar, Kedah, Malaysia</span>
                 </div>
               </div>
             </div>
           </motion.div>
 
+          {/* Right Column: 3 Capability Cards */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-4"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 grid sm:grid-cols-2 gap-4"
           >
             {features.map((feature, i) => {
               const Icon = feature.icon;
               return (
                 <GlassCard 
-                  key={i} 
+                  key={i}
                   style={{ 
                     '--spotlight-color': feature.glowColor,
-                    '--hover-border': feature.borderColor,
-                    '--hover-glow': feature.hoverGlow
                   } as React.CSSProperties}
-                  className={`cyber-about-card p-6 relative transition-all duration-500 hover:scale-[1.02] ${i === 2 ? 'sm:col-span-2' : ''}`}
+                  className={`p-6 relative group ${i === 2 ? 'sm:col-span-2' : ''}`}
                 >
-                  {/* Header/Icon */}
+                  {/* Top Specular Line */}
+                  <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+
+                  {/* Header */}
                   <div className="flex justify-between items-start mb-4">
-                    <Icon className={`w-10 h-10 ${feature.color} transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_var(--hover-border)]`} style={{ '--hover-border': feature.borderColor } as React.CSSProperties} />
-                    <span className="text-[10px] font-mono text-white/30 tracking-widest uppercase">SYS.MOD_0{i+1}</span>
+                    <div 
+                      className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10"
+                      style={{ backgroundColor: `${feature.color}15`, color: feature.color }}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-space text-slate-500 tracking-wider">
+                      MOD_0{i + 1}
+                    </span>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-2 text-text-primary group-hover:text-white transition-colors">
+                  <h3 className="text-lg font-space font-bold text-white mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-text-secondary leading-relaxed mb-6 group-hover:text-white/80 transition-colors">
+                  
+                  <p className="text-xs text-slate-400 leading-relaxed mb-5">
                     {feature.description}
                   </p>
 
-                  {/* Telemetry Stats & Progress Bar */}
-                  <div className="space-y-2 mt-4">
-                    <div className="flex justify-between text-[10px] font-mono">
-                      <span className="text-white/40">{feature.statLabel}</span>
-                      <span className="text-white/85 font-semibold" style={{ color: feature.borderColor }}>{feature.statValue}</span>
+                  {/* Progress / Stat */}
+                  <div className="space-y-2 pt-2 border-t border-white/[0.05]">
+                    <div className="flex justify-between text-[10px] font-inter">
+                      <span className="text-slate-400">{feature.statLabel}</span>
+                      <span className="font-semibold text-white">{feature.statValue}</span>
                     </div>
-                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                    <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden border border-white/[0.05]">
                       <motion.div 
                         initial={{ width: 0 }}
                         whileInView={{ width: `${feature.progress}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="h-full rounded-full bg-gradient-to-r"
+                        className="h-full rounded-full"
                         style={{ 
-                          backgroundImage: `linear-gradient(to right, ${feature.borderColor}, #ffffff)`,
-                          boxShadow: `0 0 8px ${feature.borderColor}` 
+                          backgroundColor: feature.color,
+                          boxShadow: `0 0 10px ${feature.color}50`
                         }}
                       />
                     </div>
                   </div>
 
-                  {/* Tech tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-white/5">
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mt-4 pt-3">
                     {feature.tags.map((tag, idx) => (
                       <span 
                         key={idx} 
-                        className="text-[9px] font-mono px-2 py-0.5 rounded border border-white/5 bg-white/5 text-white/60 group-hover:text-white group-hover:border-white/15 transition-all duration-300"
+                        className="text-[10px] font-inter px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-slate-300"
                       >
                         {tag}
                       </span>
@@ -201,6 +189,7 @@ export function About() {
               );
             })}
           </motion.div>
+
         </div>
       </div>
     </section>

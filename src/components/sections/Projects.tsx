@@ -404,14 +404,14 @@ export function Projects() {
 
                 {/* Subtle Ring Label */}
                 <div 
-                  className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-[#080b10]/90 border border-white/10 text-[8px] sm:text-[9px] font-space tracking-widest text-slate-400 uppercase pointer-events-auto"
+                  className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-[#080b10]/90 border border-white/10 text-[8px] sm:text-[9px] font-space tracking-widest text-slate-400 uppercase pointer-events-none select-none"
                 >
                   {tier.label}
                 </div>
 
                 {/* Rotating Container for Satellites on this specific ring */}
                 <div
-                  className={cn("absolute inset-0 pointer-events-auto", isPaused && "orbit-paused")}
+                  className={cn("absolute inset-0 pointer-events-none", isPaused && "orbit-paused")}
                   style={{
                     animation: `${tier.reverse ? 'orbit-ccw' : 'orbit-cw'} ${tier.duration}s linear infinite`,
                   }}
@@ -426,7 +426,7 @@ export function Projects() {
                     return (
                       <div
                         key={project.id}
-                        className={cn("absolute flex items-center justify-center w-0 h-0", isPaused && "orbit-paused")}
+                        className={cn("absolute flex items-center justify-center w-0 h-0 pointer-events-auto", isPaused && "orbit-paused")}
                         style={{
                           top: `${y.toFixed(1)}%`,
                           left: `${x.toFixed(1)}%`,
@@ -461,10 +461,23 @@ export function Projects() {
                               </p>
                             </div>
 
-                            <div 
-                              className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                              style={{ backgroundColor: project.color, boxShadow: `0 0 6px ${project.color}` }}
-                            />
+                            {project.live ? (
+                              <a
+                                href={project.live}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="p-1.5 rounded-lg bg-white/5 hover:bg-sky-400/20 text-slate-400 hover:text-sky-300 transition-colors z-20 flex-shrink-0 border border-white/5 hover:border-sky-400/30"
+                                title="Open Live Site"
+                              >
+                                <ArrowUpRight className="w-3.5 h-3.5" />
+                              </a>
+                            ) : (
+                              <div 
+                                className="w-1.5 h-1.5 rounded-full flex-shrink-0 mr-1"
+                                style={{ backgroundColor: project.color, boxShadow: `0 0 6px ${project.color}` }}
+                              />
+                            )}
                           </div>
 
                           {/* Mobile Satellite Bubble */}

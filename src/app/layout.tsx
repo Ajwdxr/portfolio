@@ -1,25 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Ajwad | Full Stack Developer & Liquid Glass Portfolio",
-  description: "Crafting modern digital experiences with minimalist precision, liquid glassmorphism, and high performance.",
+  title: "AJWDXR — Websites, Business Systems & Applications",
+  description: "I build digital products that make work easier. Websites, business systems and applications for businesses and organisations.",
   manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07090E",
+  themeColor: "#f9f9f7",
 };
 
 export default function RootLayout({
@@ -30,10 +36,28 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${newsreader.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
         {process.env.NODE_ENV === "development" && (
           <script
             dangerouslySetInnerHTML={{
@@ -42,7 +66,6 @@ export default function RootLayout({
                   navigator.serviceWorker.getRegistrations().then(function(registrations) {
                     for(let registration of registrations) {
                       registration.unregister();
-                      console.log('[Dev] Unregistered stale PWA Service Worker to fix HMR WebSocket.');
                     }
                   });
                 }
@@ -51,7 +74,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[#f9f9f7] dark:bg-[#0c0e12] font-body-md text-body-md text-[#1a1c1b] dark:text-[#f1f2f4] antialiased selection:bg-[#e8e8e6] dark:selection:bg-[#272d3d]" suppressHydrationWarning>
         {children}
       </body>
     </html>

@@ -1,176 +1,153 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Code2, Layers, Cpu } from "lucide-react";
-import { NeonButton } from "@/components/ui/NeonButton";
-import { getProfile, Profile } from "@/lib/supabase";
 
 export function Hero() {
-  const [profile, setProfile] = useState<Profile>({
-    name: "Ajwad",
-    role: "Full Stack Developer",
-    tagline: "Building Modern Digital Experiences",
-    bio: "I specialize in crafting high-performance web applications, fluid interfaces, and scalable architectures with minimalist aesthetics and liquid glass precision.",
-    email: "ajwadxara99@gmail.com",
-    whatsapp: "+60 11-1063 8176",
-    location: "Alor Setar, Kedah",
-    status: "ONLINE",
-  });
-
-  useEffect(() => {
-    async function loadProfile() {
-      const data = await getProfile();
-      if (data) {
-        setProfile(data);
-      }
-    }
-    loadProfile();
-  }, []);
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20">
-      {/* Nordic Frost Ambient Lighting */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-sky-400/10 via-slate-400/5 to-transparent rounded-full blur-[140px]" />
-        <div className="absolute top-1/3 left-10 w-96 h-96 bg-sky-400/5 rounded-full blur-[130px]" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-slate-300/5 rounded-full blur-[130px]" />
-        {/* Delicate noise / grid pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_20%,transparent_100%)] opacity-50" />
+    <section className="w-full pt-8 pb-12 md:pb-16 flex flex-col items-start gap-7">
+      {/* Availability Status Badge */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="inline-flex items-center gap-2 bg-[#f4f4f2] dark:bg-[#14171f] px-3.5 py-1.5 rounded-full border border-[#e2e3e1] dark:border-[#232836] transition-colors"
+      >
+        <span className="w-2 h-2 rounded-full bg-[#ffe25c] shadow-sm"></span>
+        <span className="font-mono text-[10px] text-[#1a1c1b] dark:text-[#f1f2f4] tracking-wider uppercase font-medium">
+          Based in Malaysia · Available for selected projects
+        </span>
+      </motion.div>
+
+      {/* Hero Typography */}
+      <div className="max-w-3xl flex flex-col gap-3">
+        <motion.h1
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="font-newsreader text-[34px] sm:text-[42px] md:text-[56px] leading-[1.12] text-[#000000] dark:text-[#ffffff] tracking-tight font-normal transition-colors"
+        >
+          I build digital products that make work easier.
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="font-newsreader text-[18px] md:text-[20px] leading-relaxed text-[#5e5e5e] dark:text-[#9ea5b3] transition-colors"
+        >
+          Websites, business systems and applications for businesses and organisations.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-[14px] md:text-[15px] text-[#444748] dark:text-[#cbd5e1] font-medium transition-colors"
+        >
+          I build practical digital solutions around the way your business works.
+        </motion.p>
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 max-w-6xl grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        {/* Left Column: Typography & CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-7 space-y-8 text-left"
+      {/* Action CTA Buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="flex flex-wrap items-center gap-3 pt-1"
+      >
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-2 bg-[#000000] dark:bg-[#ffffff] text-white dark:text-[#0c0e12] text-[13px] px-6 py-3 rounded-lg hover:bg-[#5e5e5e] dark:hover:bg-[#e2e3e1] transition-colors duration-150 shadow-sm"
         >
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                profile.status === "ONLINE"
-                  ? "bg-sky-400"
-                  : profile.status === "AWAY"
-                  ? "bg-amber-400"
-                  : "bg-rose-400"
-              }`} />
-              <span className={`relative inline-flex rounded-full h-2 w-2 ${
-                profile.status === "ONLINE"
-                  ? "bg-sky-400"
-                  : profile.status === "AWAY"
-                  ? "bg-amber-500"
-                  : "bg-rose-500"
-              }`} />
-            </span>
-            <span className="text-xs font-inter font-medium text-slate-300 tracking-wide">
-              {profile.status === "ONLINE" ? "Available for New Projects" : `Status: ${profile.status}`}
-            </span>
-          </motion.div>
+          <span className="font-medium">Start a Project</span>
+          <span>→</span>
+        </a>
 
-          {/* Main Headline */}
-          <div className="space-y-4">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold font-space tracking-tight text-white leading-[1.1]">
-              Crafting fluid <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-sky-300">
-                digital experiences
-              </span>
-            </h1>
-
-            <p className="text-slate-400 text-base sm:text-lg max-w-xl font-inter leading-relaxed pt-2">
-              {profile.bio}
-            </p>
-          </div>
-
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <NeonButton
-              variant="frost"
-              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-7 py-3.5"
-            >
-              <span>Explore Projects</span>
-              <ArrowRight className="w-4 h-4" />
-            </NeonButton>
-
-            <NeonButton
-              variant="titanium"
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-7 py-3.5"
-            >
-              <span>Get In Touch</span>
-            </NeonButton>
-          </div>
-
-          {/* Quick Metrics / Tech Pill Strip */}
-          <div className="pt-6 border-t border-white/[0.06] flex flex-wrap items-center gap-6 text-xs text-slate-400 font-inter">
-            <div className="flex items-center gap-2">
-              <Code2 className="w-4 h-4 text-sky-400" />
-              <span className="text-slate-300">Full Stack Architecture</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Layers className="w-4 h-4 text-slate-300" />
-              <span className="text-slate-300">Liquid Glass UI / UX</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-sky-300" />
-              <span className="text-slate-300">High-Performance APIs</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right Column: Liquid Titanium Core Sphere */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-          className="lg:col-span-5 relative flex justify-center items-center"
+        <a
+          href="#work"
+          className="inline-flex items-center gap-2 bg-[#ffffff] dark:bg-[#14171f] text-[#1a1c1b] dark:text-[#f1f2f4] text-[13px] px-6 py-3 rounded-lg border border-[#e2e3e1] dark:border-[#232836] hover:bg-[#f4f4f2] dark:hover:bg-[#191d26] transition-colors duration-150 shadow-sm"
         >
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96 flex items-center justify-center">
-            {/* Ambient Refraction Glows */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/15 via-slate-400/10 to-transparent blur-3xl" />
+          <span className="font-medium">View Work</span>
+        </a>
+      </motion.div>
 
-            {/* Liquid Titanium Orbit Rings */}
-            <div className="absolute inset-0 rounded-full border border-white/[0.09] shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] animate-[spin_30s_linear_infinite]" />
-            <div className="absolute inset-8 rounded-full border border-sky-400/[0.18] border-dashed animate-[spin_20s_linear_infinite_reverse]" />
-            <div className="absolute inset-16 rounded-full border border-white/[0.06]" />
+      {/* Browser Frame Hero Showcase */}
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="w-full mt-4 rounded-xl bg-[#ffffff] dark:bg-[#14171f] shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)] border border-[#e2e3e1] dark:border-[#232836] overflow-hidden transition-colors"
+      >
+        {/* Browser Top Bar */}
+        <div className="w-full bg-[#f4f4f2] dark:bg-[#191d26] px-4 py-3 flex items-center justify-between border-b border-[#e2e3e1] dark:border-[#232836]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#dadad8] dark:bg-[#333b4d] inline-block"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#dadad8] dark:bg-[#333b4d] inline-block"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#dadad8] dark:bg-[#333b4d] inline-block"></span>
+          </div>
 
-            {/* Orbiting Satellite Node */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            >
-              <div className="absolute top-0 w-3 h-3 rounded-full bg-sky-300 shadow-[0_0_15px_#7dd3fc]" />
-            </motion.div>
+          <div className="px-4 py-1 bg-[#ffffff] dark:bg-[#14171f] rounded border border-[#e2e3e1] dark:border-[#272d3d] text-[#444748] dark:text-[#9ea5b3] font-mono text-[10px] text-center min-w-[240px] sm:min-w-[280px] shadow-sm">
+            promptmatrix.ajwdxr.com — production live preview
+          </div>
 
-            {/* Central Liquid Glass Core Sphere */}
-            <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-gradient-to-br from-white/[0.1] via-[#0d121e]/90 to-[#080b10]/95 backdrop-blur-3xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.35)] flex flex-col items-center justify-center overflow-hidden group">
-              {/* Internal Specular Glass Highlight */}
-              <div className="absolute -top-10 -left-10 w-24 h-24 bg-white/25 rounded-full blur-xl pointer-events-none" />
-              
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center mb-2 shadow-[0_0_25px_rgba(56,189,248,0.2)]">
-                  <Sparkles className="w-6 h-6 text-sky-400 animate-pulse" />
-                </div>
-                <span className="text-xs font-space font-bold tracking-widest text-white uppercase">
-                  {profile.name}
-                </span>
-                <span className="text-[10px] font-inter text-slate-400 tracking-wider">
-                  Full Stack
-                </span>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[10px] text-[#444748] dark:text-[#9ea5b3] tracking-wider">HTTPS</span>
+          </div>
+        </div>
+
+        {/* Mockup Viewport */}
+        <div className="w-full p-4 md:p-6 bg-[#ffffff] dark:bg-[#14171f]">
+          <div className="w-full aspect-[16/9] max-h-[460px] bg-[#0d121f] rounded-lg border border-[#232d42] p-6 flex flex-col justify-between overflow-hidden relative shadow-inner">
+            {/* Terminal Top Accent */}
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 animate-pulse" />
+                <span className="font-mono text-xs text-emerald-400 font-medium tracking-wider">PROMPTMATRIX // AI CORE ACTIVE</span>
+              </div>
+              <span className="font-mono text-[10px] text-slate-400">MODEL: GPT-4o / CLAUDE 3.5</span>
+            </div>
+
+            {/* Simulated Live UI Preview */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 my-auto">
+              <div className="md:col-span-6 bg-white/[0.04] p-4 rounded-lg border border-white/10 flex flex-col gap-2">
+                <span className="font-mono text-[10px] text-slate-400 uppercase">Input: Raw Prompt Stream</span>
+                <p className="font-mono text-xs text-slate-200">
+                  &gt; Design an enterprise role-based auth flow with zero manual reconciliation bottlenecks...
+                </p>
+              </div>
+              <div className="md:col-span-6 bg-sky-950/30 p-4 rounded-lg border border-sky-500/20 flex flex-col gap-2">
+                <span className="font-mono text-[10px] text-sky-300 uppercase">Synthesized High-Fidelity Prompt</span>
+                <p className="font-mono text-xs text-sky-200">
+                  [SYSTEM ARCHITECT]: Execute RBAC security matrix with automated token rotation, strict schema validation, and audit trail telemetry.
+                </p>
               </div>
             </div>
+
+            {/* Bottom Status Bar */}
+            <div className="flex items-center justify-between pt-3 border-t border-white/10 text-[11px] font-mono">
+              <span className="text-slate-400">Latency: 28ms · Tokens/sec: 84 · Status: Online</span>
+              <a 
+                href="https://promptmatrix.ajwdxr.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-sky-400 hover:text-sky-300 underline font-medium"
+              >
+                Launch App →
+              </a>
+            </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+
+        {/* Browser Caption Bar */}
+        <div className="px-4 sm:px-6 py-3 bg-[#f4f4f2] dark:bg-[#191d26] border-t border-[#e2e3e1] dark:border-[#232836] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-[11px] font-mono">
+          <span className="text-[#444748] dark:text-[#9ea5b3]">
+            PromptMatrix — AI Prompt Architect &amp; Optimization SaaS
+          </span>
+          <span className="text-[#000000] dark:text-[#ffffff] font-medium whitespace-nowrap">
+            Production v2.1.0 · 99.95% Uptime
+          </span>
+        </div>
+      </motion.div>
     </section>
   );
 }

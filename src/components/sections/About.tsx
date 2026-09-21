@@ -1,195 +1,170 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { BrainCircuit, Cpu, Layout, Sparkles } from "lucide-react";
-
-const features = [
-  {
-    icon: BrainCircuit,
-    title: "Problem Solving",
-    description: "Architecting logical solutions to complex digital challenges with clean algorithmic thinking.",
-    color: "#38BDF8", // sky / ice
-    glowColor: "rgba(56, 189, 248, 0.12)",
-    borderColor: "rgba(56, 189, 248, 0.3)",
-    statLabel: "Algorithmic Efficiency",
-    statValue: "O(1) // Optimal",
-    progress: 95,
-    tags: ["Data Structures", "Optimization", "Logic Flow"]
-  },
-  {
-    icon: Cpu,
-    title: "System Architecture",
-    description: "Designing scalable, resilient backends, RESTful APIs, and cloud microservices.",
-    color: "#E2E8F0", // titanium platinum
-    glowColor: "rgba(226, 232, 240, 0.12)",
-    borderColor: "rgba(226, 232, 240, 0.3)",
-    statLabel: "System Reliability",
-    statValue: "99.99% Uptime",
-    progress: 92,
-    tags: ["REST APIs", "PostgreSQL", "Docker", "Edge Functions"]
-  },
-  {
-    icon: Layout,
-    title: "Liquid UI / UX Focus",
-    description: "Crafting tactile, fluid interfaces with micro-interactions, responsive layouts, and rich aesthetics.",
-    color: "#7DD3FC", // frost cyan
-    glowColor: "rgba(125, 211, 252, 0.12)",
-    borderColor: "rgba(125, 211, 252, 0.3)",
-    statLabel: "Animation Framerate",
-    statValue: "60 FPS Fluid",
-    progress: 98,
-    tags: ["Framer Motion", "Tailwind CSS", "Liquid Glass", "Next.js"]
-  }
-];
 
 export function About() {
   return (
-    <section id="about" className="py-28 relative z-10 bg-[#080b10] overflow-hidden border-t border-white/[0.06]">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-sky-500/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-slate-300/5 rounded-full blur-[150px]" />
+    <section className="w-full pt-12 md:pt-16 pb-12 md:pb-16 flex flex-col gap-8" id="about">
+      {/* Header */}
+      <div className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-[#747878] dark:text-[#9ea5b3] uppercase tracking-wider">
+          04 / BACKGROUND
+        </span>
+        <h2 className="font-newsreader text-[32px] md:text-[36px] text-[#000000] dark:text-[#ffffff] font-normal tracking-tight transition-colors">
+          Hi, I'm Ajwad.
+        </h2>
       </div>
 
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          {/* Left Column: Bio & Dossier */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Story Column */}
+        <div className="lg:col-span-7 flex flex-col gap-6">
+          {/* Main Story Card */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-5 space-y-8"
+            transition={{ duration: 0.5 }}
+            className="bg-[#ffffff] dark:bg-[#14171f] p-6 sm:p-8 rounded-xl border border-[#e2e3e1] dark:border-[#232836] shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.25)] flex flex-col gap-4 transition-colors"
           >
-            <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
-                <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-                <span className="font-space text-sky-300 text-xs tracking-wider uppercase">About The Creator</span>
-              </div>
+            <p className="font-newsreader text-[19px] leading-relaxed text-[#1a1c1b] dark:text-[#f1f2f4] transition-colors">
+              I'm a software developer based in Malaysia, building websites, applications and business systems.
+            </p>
+            <p className="font-newsreader text-[19px] leading-relaxed text-[#1a1c1b] dark:text-[#f1f2f4] transition-colors">
+              I enjoy taking complicated or manual processes and turning them into something simpler to use.
+            </p>
 
-              <h2 className="text-3xl sm:text-5xl font-space font-bold text-white tracking-tight mb-4">
-                Philosophy & Craft<span className="text-sky-400">.</span>
-              </h2>
-
-              <p className="text-slate-400 text-base leading-relaxed font-inter">
-                I combine strong full-stack software fundamentals with modern design sensibilities. Every line of code is structured for performance, responsiveness, and clean maintainability.
+            <div className="bg-[#f4f4f2] dark:bg-[#191d26] p-4 sm:p-5 rounded-lg border border-[#e2e3e1] dark:border-[#272d3d] my-1 transition-colors">
+              <p className="font-newsreader italic text-[20px] text-[#000000] dark:text-[#ffffff] leading-snug transition-colors">
+                “Is there a better way to do this?”
               </p>
+              <span className="text-[13px] text-[#444748] dark:text-[#cbd5e1] mt-1.5 block transition-colors">
+                Most of the things I build start with this simple question.
+              </span>
             </div>
 
-            {/* Frosted Glass Creator Dossier */}
-            <div className="p-6 rounded-2xl bg-[#0d121f]/70 backdrop-blur-2xl border border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.4)] relative overflow-hidden space-y-4">
-              {/* Top Specular Line */}
-              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+            <p className="text-[14px] md:text-[15px] leading-relaxed text-[#5e5e5e] dark:text-[#9ea5b3] transition-colors">
+              Rather than introducing unnecessary layers of technology, I work directly with clients to understand their daily operational bottlenecks and build software tailored to their exact requirements.
+            </p>
+          </motion.div>
 
-              <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
-                <span className="text-xs font-space font-semibold text-white tracking-wide">Developer Dossier</span>
-                <span className="text-[10px] font-inter px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-400/20">
-                  Active // Ready
+          {/* Off-screen interests */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-[#ffffff] dark:bg-[#14171f] p-6 sm:p-8 rounded-xl border border-[#e2e3e1] dark:border-[#232836] shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.25)] flex flex-col gap-4 transition-colors"
+          >
+            <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase tracking-wider">
+              When I'm not coding
+            </span>
+            <p className="text-[14px] md:text-[15px] text-[#1a1c1b] dark:text-[#f1f2f4] transition-colors">
+              Off-screen disciplines keep my thinking grounded and deliberate:
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+              <div className="p-3.5 bg-[#f4f4f2] dark:bg-[#191d26] rounded-lg border border-[#e2e3e1] dark:border-[#272d3d] flex flex-col gap-1 transition-colors">
+                <span className="font-mono text-[12px] text-[#000000] dark:text-[#ffffff] font-medium transition-colors">
+                  Kamen Rider Collecting
+                </span>
+                <span className="text-[13px] text-[#5e5e5e] dark:text-[#cbd5e1] leading-snug transition-colors">
+                  Vintage Showa &amp; Heisei figures and driver belt engineering.
                 </span>
               </div>
 
-              <div className="space-y-3 text-xs font-inter">
-                <div className="flex justify-between items-center text-slate-400">
-                  <span>Name:</span>
-                  <span className="font-medium text-white">Ajwad</span>
-                </div>
-                <div className="flex justify-between items-center text-slate-400">
-                  <span>Role:</span>
-                  <span className="font-medium text-sky-200">Full Stack Web Developer</span>
-                </div>
-                <div className="flex justify-between items-center text-slate-400">
-                  <span>Design Aesthetic:</span>
-                  <span className="font-medium text-slate-200">Nordic Frost & Liquid Titanium</span>
-                </div>
-                <div className="flex justify-between items-center text-slate-400">
-                  <span>Based in:</span>
-                  <span className="font-medium text-white">Alor Setar, Kedah, Malaysia</span>
-                </div>
+              <div className="p-3.5 bg-[#f4f4f2] dark:bg-[#191d26] rounded-lg border border-[#e2e3e1] dark:border-[#272d3d] flex flex-col gap-1 transition-colors">
+                <span className="font-mono text-[12px] text-[#000000] dark:text-[#ffffff] font-medium transition-colors">
+                  Traditional Archery
+                </span>
+                <span className="text-[13px] text-[#5e5e5e] dark:text-[#cbd5e1] leading-snug transition-colors">
+                  Instinctive shooting practice focused on stillness and patience.
+                </span>
+              </div>
+
+              <div className="p-3.5 bg-[#f4f4f2] dark:bg-[#191d26] rounded-lg border border-[#e2e3e1] dark:border-[#272d3d] flex flex-col gap-1 transition-colors">
+                <span className="font-mono text-[12px] text-[#000000] dark:text-[#ffffff] font-medium transition-colors">
+                  Hardware Tinkering
+                </span>
+                <span className="text-[13px] text-[#5e5e5e] dark:text-[#cbd5e1] leading-snug transition-colors">
+                  Custom microcontrollers, home automation, and sensor benches.
+                </span>
+              </div>
+
+              <div className="p-3.5 bg-[#f4f4f2] dark:bg-[#191d26] rounded-lg border border-[#e2e3e1] dark:border-[#272d3d] flex flex-col gap-1 transition-colors">
+                <span className="font-mono text-[12px] text-[#000000] dark:text-[#ffffff] font-medium transition-colors">
+                  Local Coffee Discovery
+                </span>
+                <span className="text-[13px] text-[#5e5e5e] dark:text-[#cbd5e1] leading-snug transition-colors">
+                  Exploring independent roasters across the Klang Valley and beyond.
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Meta Sidebar */}
+        <div className="lg:col-span-5 flex flex-col gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-[#ffffff] dark:bg-[#14171f] p-6 rounded-xl border border-[#e2e3e1] dark:border-[#232836] shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.25)] flex flex-col gap-5 transition-colors"
+          >
+            <div className="flex items-center gap-3 pb-2 border-b border-[#eeeeec] dark:border-[#272d3d]">
+              <div className="w-10 h-10 rounded-full bg-[#000000] dark:bg-[#ffffff] flex items-center justify-center text-white dark:text-[#0c0e12] font-mono text-xs font-semibold transition-colors">
+                AJ
+              </div>
+              <div className="flex flex-col">
+                <span className="font-sans text-[17px] font-semibold text-[#000000] dark:text-[#ffffff] leading-tight transition-colors">
+                  Ajwad
+                </span>
+                <span className="font-mono text-[11px] text-[#5e5e5e] dark:text-[#9ea5b3]">
+                  Software Craftsman
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between items-baseline py-2 bg-[#f4f4f2]/70 dark:bg-[#191d26] px-3 rounded border border-[#eeeeec] dark:border-[#272d3d] transition-colors">
+                <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase">Location</span>
+                <span className="text-[13px] text-[#000000] dark:text-[#ffffff] font-medium">Malaysia (UTC+8)</span>
+              </div>
+
+              <div className="flex justify-between items-baseline py-2 bg-[#f4f4f2]/70 dark:bg-[#191d26] px-3 rounded border border-[#eeeeec] dark:border-[#272d3d] transition-colors">
+                <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase">Role</span>
+                <span className="text-[13px] text-[#000000] dark:text-[#ffffff] font-medium">Independent Developer</span>
+              </div>
+
+              <div className="flex justify-between items-baseline py-2 bg-[#f4f4f2]/70 dark:bg-[#191d26] px-3 rounded border border-[#eeeeec] dark:border-[#272d3d] transition-colors">
+                <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase">Specialisation</span>
+                <span className="text-[13px] text-[#000000] dark:text-[#ffffff] font-medium">Web · Systems · Mobile</span>
+              </div>
+
+              <div className="flex justify-between items-baseline py-2 bg-[#f4f4f2]/70 dark:bg-[#191d26] px-3 rounded border border-[#eeeeec] dark:border-[#272d3d] transition-colors">
+                <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase">Availability</span>
+                <span className="text-[13px] text-[#000000] dark:text-[#ffffff] font-medium flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#ffe25c]"></span>
+                  Freelance &amp; Contract
+                </span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: 3 Capability Cards */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-7 grid sm:grid-cols-2 gap-4"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-[#f4f4f2] dark:bg-[#191d26] p-6 rounded-xl border border-[#e2e3e1] dark:border-[#272d3d] shadow-sm flex flex-col gap-2 transition-colors"
           >
-            {features.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <GlassCard 
-                  key={i}
-                  style={{ 
-                    '--spotlight-color': feature.glowColor,
-                  } as React.CSSProperties}
-                  className={`p-6 relative group ${i === 2 ? 'sm:col-span-2' : ''}`}
-                >
-                  {/* Top Specular Line */}
-                  <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-
-                  {/* Header */}
-                  <div className="flex justify-between items-start mb-4">
-                    <div 
-                      className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10"
-                      style={{ backgroundColor: `${feature.color}15`, color: feature.color }}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-[10px] font-space text-slate-500 tracking-wider">
-                      MOD_0{i + 1}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-space font-bold text-white mb-2">
-                    {feature.title}
-                  </h3>
-                  
-                  <p className="text-xs text-slate-400 leading-relaxed mb-5">
-                    {feature.description}
-                  </p>
-
-                  {/* Progress / Stat */}
-                  <div className="space-y-2 pt-2 border-t border-white/[0.05]">
-                    <div className="flex justify-between text-[10px] font-inter">
-                      <span className="text-slate-400">{feature.statLabel}</span>
-                      <span className="font-semibold text-white">{feature.statValue}</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden border border-white/[0.05]">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${feature.progress}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        className="h-full rounded-full"
-                        style={{ 
-                          backgroundColor: feature.color,
-                          boxShadow: `0 0 10px ${feature.color}50`
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-4 pt-3">
-                    {feature.tags.map((tag, idx) => (
-                      <span 
-                        key={idx} 
-                        className="text-[10px] font-inter px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-slate-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </GlassCard>
-              );
-            })}
+            <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase tracking-wider">
+              Philosophy
+            </span>
+            <p className="text-[13px] text-[#444748] dark:text-[#cbd5e1] leading-relaxed transition-colors">
+              I don't deliver black boxes. You receive cleanly documented, standard-compliant code bases that your internal team can operate and evolve without lock-in.
+            </p>
           </motion.div>
-
         </div>
       </div>
     </section>

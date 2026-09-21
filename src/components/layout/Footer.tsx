@@ -1,46 +1,66 @@
-import { Sparkles } from "lucide-react";
-import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.06] bg-[#07090e] py-12 overflow-hidden">
-      {/* Top Ambient Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-
-      <div className="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Brand */}
-        <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-full bg-white/[0.05] border border-white/10 flex items-center justify-center">
-            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+    <footer className="w-full bg-[#f4f4f2] dark:bg-[#0c0e12] mt-12 border-t border-[#e2e3e1] dark:border-[#232836] transition-colors">
+      <div className="max-w-[1120px] mx-auto px-4 md:px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+          {/* Brand Col */}
+          <div className="md:col-span-5 flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs uppercase text-[#1a1c1b] dark:text-[#f1f2f4] font-medium tracking-wider">
+                AJWDXR
+              </span>
+              <span className="text-[#747878] dark:text-[#9ea5b3]">/</span>
+              <span className="text-[13px] text-[#444748] dark:text-[#9ea5b3]">Websites · Systems · Apps</span>
+            </div>
+            <p className="text-[13px] text-[#444748] dark:text-[#9ea5b3] leading-relaxed">
+              Based in Malaysia · Available for selected projects worldwide.
+            </p>
           </div>
-          <span className="font-space font-medium text-white text-sm tracking-tight">
-            Ajwad<span className="text-sky-400">.</span>dev
-          </span>
+
+          {/* Index Col */}
+          <div className="md:col-span-4 flex flex-col gap-2">
+            <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase tracking-wider">
+              Index
+            </span>
+            <nav className="flex flex-col gap-1.5">
+              <a className="text-[13px] text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="#work">Work</a>
+              <a className="text-[13px] text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="#services">Services</a>
+              <a className="text-[13px] text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="#process">Process</a>
+              <a className="text-[13px] text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="#about">About</a>
+              <a className="text-[13px] text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="#contact">Contact</a>
+            </nav>
+          </div>
+
+          {/* Direct Contact Col */}
+          <div className="md:col-span-3 flex flex-col gap-2">
+            <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase tracking-wider">
+              Direct Contact
+            </span>
+            <div className="flex flex-col gap-1.5 text-[13px]">
+              <a className="text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="mailto:ajwadxara99@gmail.com">
+                Email
+              </a>
+              <a className="text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="https://wa.me/601110638176" target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
+              <a className="text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="https://linkedin.com/in/ajwdxr" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a className="text-[#444748] dark:text-[#9ea5b3] hover:text-[#1a1c1b] dark:hover:text-[#ffffff] transition-colors" href="https://github.com/ajwdxr" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Copyright */}
-        <p className="text-slate-500 text-xs font-inter text-center md:text-left">
-          © {new Date().getFullYear()} Ajwad. Crafted with precision, minimalist aesthetics & liquid glass.
-        </p>
-
-        {/* Social Links */}
-        <div className="flex items-center gap-3">
-          {[
-            { icon: FaGithub, href: "https://github.com", label: "GitHub" },
-            { icon: FaLinkedin, href: "https://linkedin.com", label: "LinkedIn" },
-            { icon: FaWhatsapp, href: "https://wa.me/601110638176", label: "WhatsApp" },
-          ].map((social, i) => (
-            <a
-              key={i}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.label}
-              className="p-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-slate-400 hover:text-white hover:border-white/25 hover:bg-white/[0.08] transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.2)]"
-            >
-              <social.icon className="w-4 h-4" />
-            </a>
-          ))}
+        {/* Bottom Credits Bar */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-6 border-t border-[#e2e3e1] dark:border-[#232836] transition-colors">
+          <span className="font-mono text-[10px] text-[#444748] dark:text-[#9ea5b3]">
+            Built with too much coffee. © {new Date().getFullYear()} AJWDXR
+          </span>
+          <span className="font-mono text-[10px] text-[#444748] dark:text-[#9ea5b3]">
+            Kuala Lumpur, MY
+          </span>
         </div>
       </div>
     </footer>

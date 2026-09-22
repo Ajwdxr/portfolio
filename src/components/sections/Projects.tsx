@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 interface FeaturedProject {
@@ -16,18 +15,6 @@ interface FeaturedProject {
   metricValue: string;
   liveUrl: string;
   tech: string[];
-}
-
-interface ArchiveProject {
-  id: string;
-  title: string;
-  category: "saas" | "webapp" | "website";
-  categoryLabel: string;
-  type: string;
-  description: string;
-  tech: string[];
-  liveUrl: string;
-  year: string;
 }
 
 const featuredProjects: FeaturedProject[] = [
@@ -102,9 +89,23 @@ const featuredProjects: FeaturedProject[] = [
     tech: ["React", "TypeScript", "Tailwind CSS", "Cloudflare Workers", "PWA"],
   },
   {
+    id: "afifazman",
+    tag: "Property Consultant Portal",
+    index: "[06]",
+    year: "2024",
+    status: "Live Deployment",
+    title: "Afif Azman",
+    description:
+      "Real estate consultant portal for industrial, commercial, and residential property listings across Johor with interactive property showcases and instant WhatsApp enquiry integration.",
+    metricTitle: "Conversion & Lead Capture",
+    metricValue: "Direct WhatsApp lead capture · Clean listing UX · Fast responsive load",
+    liveUrl: "https://afifazman.com/",
+    tech: ["HTML", "Vanilla CSS", "JavaScript", "PHP", "PWA"],
+  },
+  {
     id: "rembayung",
     tag: "Restaurant Showcase",
-    index: "[06]",
+    index: "[07]",
     year: "2024",
     status: "Live Deployment",
     title: "Rembayung",
@@ -117,107 +118,7 @@ const featuredProjects: FeaturedProject[] = [
   },
 ];
 
-const allProjects: ArchiveProject[] = [
-  {
-    id: "PRJ-001",
-    title: "PromptMatrix",
-    category: "saas",
-    categoryLabel: "SaaS & AI",
-    type: "AI SaaS Platform",
-    description: "AI prompt architect and prompt optimization SaaS with CRT shader visual aesthetics and instant LLM synthesis.",
-    tech: ["Next.js", "OpenAI API", "Tailwind CSS", "Supabase"],
-    liveUrl: "https://promptmatrix.ajwdxr.com",
-    year: "2024",
-  },
-  {
-    id: "PRJ-002",
-    title: "BellyBeats",
-    category: "webapp",
-    categoryLabel: "Web App & PWA",
-    type: "Parenting Tracker PWA",
-    description: "Baby kick tracker with real-time movement logging, trend analytics, and offline service worker sync.",
-    tech: ["Next.js", "PWA", "Tailwind CSS", "Framer Motion"],
-    liveUrl: "https://bellybeats.ajwdxr.com",
-    year: "2024",
-  },
-  {
-    id: "PRJ-003",
-    title: "AttendX",
-    category: "webapp",
-    categoryLabel: "Web App & PWA",
-    type: "Attendance System",
-    description: "Smart attendance platform with biometric facial recognition and GPS geolocation check-in fencing.",
-    tech: ["Next.js", "Tailwind CSS", "Face Recognition", "Geolocation", "PWA"],
-    liveUrl: "https://attendx.ajwdxr.com",
-    year: "2024",
-  },
-  {
-    id: "PRJ-004",
-    title: "ARROWLOG",
-    category: "webapp",
-    categoryLabel: "Web App & PWA",
-    type: "Archery Scoring & Session Tracker",
-    description: "Shoot. Score. Share. Real-time archery session scoring, arrow tracking, and shared practice logs for archery communities.",
-    tech: ["Next.js", "Tailwind CSS", "PWA", "Session Sync"],
-    liveUrl: "https://archerlog.vercel.app/",
-    year: "2024",
-  },
-  {
-    id: "PRJ-005",
-    title: "E-Masjid",
-    category: "webapp",
-    categoryLabel: "Web App & PWA",
-    type: "Community Portal",
-    description: "Digital hub for Masjid Al Rahmah Mergong. Automated prayer times, announcements, and digital Quran.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Cloudflare Workers", "PWA"],
-    liveUrl: "https://e-masjid.taufec.workers.dev",
-    year: "2024",
-  },
-  {
-    id: "PRJ-006",
-    title: "KafeKiro",
-    category: "website",
-    categoryLabel: "Websites",
-    type: "Artisan Coffee Landing",
-    description: "Artisan coffee shop landing page featuring handcrafted drink menus, photo galleries, and booking modals.",
-    tech: ["HTML", "Vanilla CSS", "JavaScript", "Vite"],
-    liveUrl: "https://kafekiro.vercel.app",
-    year: "2024",
-  },
-  {
-    id: "PRJ-007",
-    title: "Rembayung",
-    category: "website",
-    categoryLabel: "Websites",
-    type: "Restaurant Showcase",
-    description: "Malaysian cuisine showcase for Rembayung by Khairul Aming with dynamic theme switching.",
-    tech: ["Tailwind CSS", "JavaScript", "PHP", "Theme Engine"],
-    liveUrl: "https://ajwdxr.free.nf/rembayung/",
-    year: "2024",
-  },
-  {
-    id: "PRJ-008",
-    title: "Afif Azman",
-    category: "website",
-    categoryLabel: "Websites",
-    type: "Property Consultant",
-    description: "Real estate consultant portal for industrial, commercial, and residential listings in Johor with WhatsApp consultation.",
-    tech: ["HTML", "Vanilla CSS", "JavaScript", "PHP", "PWA"],
-    liveUrl: "https://afifazman.com/",
-    year: "2024",
-  },
-];
-
-type CategoryFilter = "all" | "saas" | "webapp" | "website";
-
 export function Projects() {
-  const [filter, setFilter] = useState<CategoryFilter>("all");
-
-  const filteredArchive = useMemo(() => {
-    if (filter === "all") return allProjects;
-    return allProjects.filter((p) => p.category === filter);
-  }, [filter]);
-
   return (
     <section className="w-full pt-12 md:pt-16 pb-12 md:pb-16 flex flex-col gap-10" id="work">
       {/* Section Header */}
@@ -333,101 +234,6 @@ export function Projects() {
             </div>
           </motion.article>
         ))}
-      </div>
-
-      {/* Complete Project Archive Header & Filters */}
-      <div className="mt-8 pt-8 border-t border-[#e2e3e1] dark:border-[#232836] flex flex-col gap-6 transition-colors">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="flex flex-col gap-1">
-            <span className="font-mono text-xs text-[#747878] dark:text-[#9ea5b3] uppercase tracking-wider">
-              Complete Archive
-            </span>
-            <h3 className="font-newsreader text-[26px] md:text-[30px] text-[#000000] dark:text-[#ffffff] font-normal transition-colors">
-              All deployed projects &amp; websites
-            </h3>
-            <p className="text-[13px] text-[#444748] dark:text-[#9ea5b3] transition-colors">
-              Browse through my full list of SaaS products, mobile PWAs, and client websites.
-            </p>
-          </div>
-
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-1.5">
-            {[
-              { id: "all", label: "All Work" },
-              { id: "saas", label: "SaaS & AI" },
-              { id: "webapp", label: "Web Apps & PWAs" },
-              { id: "website", label: "Websites" },
-            ].map((tab) => {
-              const isActive = filter === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setFilter(tab.id as CategoryFilter)}
-                  className={`px-3 py-1 rounded-full font-mono text-[11px] transition-colors border ${
-                    isActive
-                      ? "bg-[#000000] dark:bg-[#ffffff] text-white dark:text-[#0c0e12] border-[#000000] dark:border-[#ffffff]"
-                      : "bg-[#ffffff] dark:bg-[#14171f] text-[#444748] dark:text-[#9ea5b3] border-[#e2e3e1] dark:border-[#232836] hover:bg-[#f4f4f2] dark:hover:bg-[#191d26]"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Archive Cards Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <AnimatePresence>
-            {filteredArchive.map((item) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.2 }}
-                className="bg-[#ffffff] dark:bg-[#14171f] p-5 rounded-xl border border-[#e2e3e1] dark:border-[#232836] shadow-[0_1px_6px_rgba(0,0,0,0.02)] flex flex-col justify-between gap-4 hover:border-[#1a1c1b]/30 dark:hover:border-white/20 transition-all group"
-              >
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-[10px] text-[#747878] dark:text-[#9ea5b3] uppercase">
-                      {item.categoryLabel} · {item.year}
-                    </span>
-                    <a
-                      href={item.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1 rounded bg-[#f4f4f2] dark:bg-[#191d26] text-[#444748] dark:text-[#9ea5b3] hover:text-[#000000] dark:hover:text-[#ffffff] hover:bg-[#eeeeec] dark:hover:bg-[#232836] transition-colors"
-                      title="Open Live Deployment"
-                    >
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-
-                  <h4 className="font-sans text-[16px] font-semibold text-[#000000] dark:text-[#ffffff] group-hover:text-[#5e5e5e] dark:group-hover:text-[#cbd5e1] transition-colors">
-                    {item.title}
-                  </h4>
-
-                  <p className="text-[13px] text-[#444748] dark:text-[#9ea5b3] leading-relaxed line-clamp-2 transition-colors">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#eeeeec] dark:border-[#272d3d] transition-colors">
-                  {item.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="font-mono text-[10px] px-2 py-0.5 bg-[#f4f4f2] dark:bg-[#191d26] rounded text-[#5e5e5e] dark:text-[#9ea5b3] transition-colors"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
       </div>
     </section>
   );

@@ -53,13 +53,6 @@ export function Navbar() {
               AJWDXR
             </span>
           </a>
-
-          <div className="hidden lg:flex items-center gap-1.5 bg-[#f4f4f2] dark:bg-[#14171f] px-3 py-1 rounded-full border border-[#e2e3e1] dark:border-[#232836] transition-colors">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ffe25c] animate-pulse"></span>
-            <span className="font-mono text-[10px] uppercase text-[#444748] dark:text-[#9ea5b3] tracking-wider">
-              Available for selected projects · Malaysia
-            </span>
-          </div>
         </div>
 
         {/* Right: Navigation & Action */}
